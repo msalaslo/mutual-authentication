@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: secure-server
+    
+server:
+  port: 8443
+  ssl:
+    key-store: classpath:server-keystore.jks
+    key-store-password: secret
+    key-alias: es1pocmom01v
+    trust-store: classpath:server-truststore.jks
+    trust-store-password: secret
+    enabled: true
+    client-auth: need
+http:
+  client:
+    ssl:
+      trust-store: classpath:server-truststore.jks
+      trust-store-password: secret
