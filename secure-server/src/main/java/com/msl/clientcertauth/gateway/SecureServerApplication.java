@@ -37,6 +37,7 @@ public class SecureServerApplication {
 //		System.setProperty("javax.net.ssl.trustStore", trustStoreFile.getURL().toString());
 //		System.setProperty("javax.net.ssl.trustStorePassword", trustStorePassword);
 		
+		// TODO: Remove when we have a CA Signed certificate in the backend
 		javax.net.ssl.HttpsURLConnection.setDefaultHostnameVerifier(
 			(hostname,sslSession) -> {
 				if (hostname.equals("localhost") || hostname.startsWith("es1pocmom01v")) {

@@ -6,7 +6,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 @EnableWebSecurity
@@ -25,6 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Bean
     public UserDetailsService userDetailsService() {
+		//TODO apply actual authentication: one certificate will be associated to a Oauth2 credential of APIManager 
         return (username -> {
         	if (username.equals("apimanager-secure-client") || username.equals("apimanager-secure-client-2")) {
                 return new User(username, "", AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_USER"));
@@ -33,5 +33,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             }
         });
     }
-	
 }
